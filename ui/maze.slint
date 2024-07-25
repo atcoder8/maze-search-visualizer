@@ -1,0 +1,39 @@
+export struct MazeCellProperty {
+    cell-color: color,
+    footprint: bool,
+}
+
+component MazeCellComponent inherits Rectangle {
+    in property <MazeCellProperty> cell-property;
+    in property <length> cell-size;
+
+    width: cell-size;
+    height: cell-size;
+    background: cell-property.cell-color;
+
+    footprint-rectangle := Rectangle {
+        width: cell-size / 4;
+        height: cell-size / 4;
+        background: #006400;
+        visible: cell-property.footprint;
+    }
+}
+
+export component DrawingMazeComponent inherits Rectangle {
+    in property <int> maze-rows;
+    in property <int> maze-cols;
+    in property <length> cell-size;
+    in property <length> margin;
+    in property <[MazeCellProperty]> properties-of-cells;
+
+    width: maze-cols * (cell-size + margin) + margin;
+    height: maze-rows * (cell-size + margin) + margin;
+    background: #505050;
+
+    for cell-property[i] in properties-of-cells: MazeCellComponent {
+        x: margin + mod(i, maze-cols) * (cell-size + margin);
+        y: margin + floor(i / maze-cols) * (cell-size + margin);
+        cell-property: cell-property;
+        cell-size: cell-size;
+    }
+}

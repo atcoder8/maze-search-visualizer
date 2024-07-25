@@ -1,0 +1,49 @@
+import { Button, HorizontalBox, ComboBox } from "std-widgets.slint";
+
+export component MainMenu inherits HorizontalBox {
+    // in property <bool> play-pause-enabled <=> play-pause-button.enabled;
+    // in property <string> play-pause-text <=> play-pause-button.text;
+    callback advance-callback();
+    callback play-pause-callback();
+    // in property <bool> reset-enabled <=> reset-button.enabled;
+    callback reset-callback();
+    callback change-callback();
+    callback select-algorithm-callback();
+    in property <string> selected-search-algorithm <=> select-algorithm-combo-box.current-value;
+    play-pause-button := Button {
+        text: "Play/Pause";
+        clicked => {
+            play-pause-callback();
+        }
+    }
+
+    advance-button := Button {
+        text: "Advance";
+        clicked => {
+            advance-callback();
+        }
+    }
+
+    reset-button := Button {
+        text: "Reset";
+        clicked => {
+            reset-callback();
+        }
+    }
+
+    change-button := Button {
+        text: "Change";
+        clicked => {
+            change-callback();
+        }
+    }
+
+    select-algorithm-combo-box := ComboBox {
+        model: ["DFS", "BFS", "A*"];
+        current-index: 0;
+        selected => {
+            select-algorithm-callback();
+        }
+        width: 100px;
+    }
+}

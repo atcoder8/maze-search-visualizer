@@ -1,0 +1,17 @@
+[package]
+name = "maze-search-visualizer"
+version = "0.1.0"
+authors = ["atcoder8 <atcoder8@gmail.com>"]
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+itertools = "0.13.0"
+ndarray = "0.15.6"
+rand = "0.8.5"
+slint = "1.6"
+
+[build-dependencies]
+slint-build = "1.6"

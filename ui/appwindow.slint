@@ -1,0 +1,52 @@
+import { VerticalBox } from "std-widgets.slint";
+import { MainMenu } from "menu.slint";
+import { MazeCellProperty, DrawingMazeComponent } from "maze.slint";
+
+export component MainWindow inherits Window {
+    in property <string> app-title;
+    in property <int> maze-rows;
+    in property <int> maze-cols;
+    in property <length> cell-size;
+    in property <length> margin;
+    in property <[MazeCellProperty]> properties-of-cells;
+    callback advance-callback;
+    callback play-pause-callback;
+    callback reset-callback;
+    callback change-callback;
+    callback select-algorithm-callback;
+    in property <string> selected-search-algorithm <=> main-menu.selected-search-algorithm;
+
+    icon: @image-url("../assets/maze_9x9.png");
+
+    title: app-title;
+
+    visualizer := VerticalBox {
+        padding: 0px;
+
+        main-menu := MainMenu {
+            advance-callback => {
+                root.advance-callback();
+            }
+            play-pause-callback => {
+                root.play-pause-callback();
+            }
+            reset-callback => {
+                root.reset-callback();
+            }
+            change-callback => {
+                root.change-callback();
+            }
+            select-algorithm-callback => {
+                root.select-algorithm-callback();
+            }
+        }
+
+        DrawingMazeComponent {
+            maze-rows: maze-rows;
+            maze-cols: maze-cols;
+            cell-size: cell-size;
+            margin: margin;
+            properties-of-cells: properties-of-cells;
+        }
+    }
+}
