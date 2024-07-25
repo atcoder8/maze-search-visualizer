@@ -52,4 +52,4 @@ The A* algorithm uses Manhattan distance as the estimated value to the goal.
 
 The maze solved using the DFS algorithm looks like this.
 
-<div><video controls src="https://github.com/user-attachments/assets/4107660f-84e3-4b17-bf33-3e480c40c9ab" width=400px></div>
+<video controls src="https://github.com/user-attachments/assets/4107660f-84e3-4b17-bf33-3e480c40c9ab" width=400px>
