@@ -1,7 +1,7 @@
 [package]
 name = "maze-search-visualizer"
 version = "0.1.0"
-authors = ["atcoder8 <atcoder8@gmail.com>"]
+authors = ["pencoder <atcoder8@gmail.com>"]
 edition = "2021"
 build = "build.rs"
 
